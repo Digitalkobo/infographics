@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>インフォグラフィック: デジタル時間の過ごし方 - 世界 vs 日本</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+        .kpi-card {
+            background-color: #2d3748;
+            border-left: 5px solid #FF5733;
+        }
+        .section-title {
+            color: #A133FF;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">デジタル時間の過ごし方</h1>
+            <p class="text-xl md:text-2xl text-slate-300">世界と日本のオンライン利用動向、徹底比較 (2024年)</p>
+        </header>
+
+        <main class="space-y-16">
+
+            <section id="global-overview">
+                <h2 class="text-3xl font-bold text-center mb-8 section-title">世界のオンラインエンゲージメント</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 text-center">
+                    <div class="kpi-card rounded-lg shadow-xl p-6">
+                        <p class="text-5xl font-bold text-white">55<span class="text-3xl">億人</span></p>
+                        <p class="mt-2 text-slate-400">世界のインターネット利用者</p>
+                    </div>
+                    <div class="kpi-card rounded-lg shadow-xl p-6">
+                        <p class="text-5xl font-bold text-white">6<span class="text-xl">時間</span>40<span class="text-xl">分</span></p>
+                        <p class="mt-2 text-slate-400">1日の平均オンライン時間</p>
+                    </div>
+                    <div class="kpi-card rounded-lg shadow-xl p-6">
+                        <p class="text-5xl font-bold text-white">50<span class="text-3xl">億人</span></p>
+                        <p class="mt-2 text-slate-400">ソーシャルメディア利用者</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-gray-800 rounded-lg shadow-xl p-6">
+                        <h3 class="text-2xl font-bold text-center mb-4">オンライン時間の内訳</h3>
+                        <p class="text-center text-slate-400 mb-4">1日のオンライン時間のうち、実に3分の1以上がソーシャルメディアに費やされています。</p>
+                        <div class="chart-container">
+                            <canvas id="socialTimeDonutChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-gray-800 rounded-lg shadow-xl p-6">
+                        <h3 class="text-2xl font-bold text-center mb-4">世界の人気ソーシャルプラットフォーム</h3>
+                        <p class="text-center text-slate-400 mb-4">Facebookが依然として最多のユーザー数を誇り、YouTubeがそれに続きます。</p>
+                        <div class="chart-container">
+                            <canvas id="globalPlatformsBarChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="youtube-dominance">
+                <h2 class="text-3xl font-bold text-center mb-8 section-title">動画の巨人: YouTubeの圧倒的優位性</h2>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-gray-800 rounded-lg shadow-xl p-6">
+                        <h3 class="text-2xl font-bold text-center mb-4">総視聴時間で他を圧倒</h3>
+                        <p class="text-center text-slate-400 mb-4">YouTubeは総視聴時間でTikTokの2倍以上、Facebookの1.4倍を記録しています。</p>
+                        <div class="chart-container">
+                            <canvas id="youtubeWatchTimeChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-gray-800 rounded-lg shadow-xl p-6 flex flex-col justify-center items-center text-center">
+                        <h3 class="text-2xl font-bold mb-4">リビングルームを占拠</h3>
+                        <p class="text-7xl font-bold text-white">12.4<span class="text-5xl">%</span></p>
+                        <p class="mt-4 text-slate-400 text-lg">2025年4月、米国の<strong class="text-white">コネクテッドTV総視聴時間</strong>に占めるYouTubeのシェア。これはモバイルやPCでの視聴を含まない数値です。</p>
+                         <p class="mt-4 text-slate-400">1日に<strong class="text-white">10億時間</strong>以上がテレビ画面で再生されています。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="world-vs-japan">
+                <h2 class="text-3xl font-bold text-center mb-8 section-title">対照的なデジタル習慣：世界 vs 日本</h2>
+                <div class="bg-gray-800 rounded-lg shadow-xl p-6">
+                    <h3 class="text-2xl font-bold text-center mb-4">1日の平均利用時間比較</h3>
+                    <p class="text-center text-slate-400 mb-6">日本のオンライン利用、特にソーシャルメディアに費やす時間は、世界平均を大幅に下回っています。これは、プライバシー重視や「スーパーアプリ」中心の文化が背景にあります。</p>
+                    <div class="chart-container h-[450px] max-h-[500px]">
+                        <canvas id="worldJapanTimeComparisonChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section id="japan-ecosystem">
+                <h2 class="text-3xl font-bold text-center mb-8 section-title">日本の独自デジタル生態系</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-gray-800 rounded-lg shadow-xl p-6">
+                        <h3 class="text-2xl font-bold text-center mb-4">国内ソーシャルプラットフォーム勢力図</h3>
+                        <p class="text-center text-slate-400 mb-4">日本ではメッセージングを核としたLINEが圧倒的な利用者数を誇り、匿名性の高いX（旧Twitter）も根強い人気を維持しています。</p>
+                        <div class="chart-container h-[400px] max-h-[450px]">
+                            <canvas id="japanPlatformsChart"></canvas>
+                        </div>
+                    </div>
+                     <div class="bg-gray-800 rounded-lg shadow-xl p-6 flex flex-col justify-center items-center text-center">
+                        <h3 class="text-2xl font-bold mb-4">君臨する「スーパーアプリ」: LINE</h3>
+                        <p class="text-slate-400 mb-6">LINEは単なるメッセンジャーではありません。決済、ニュース、公的サービスまで、100以上の機能を統合し、日常生活に不可欠なハブとなっています。</p>
+                        <div class="space-y-4">
+                            <div class="flex items-center bg-gray-700 p-4 rounded-lg">
+                                <span class="text-3xl mr-4">💬</span>
+                                <div>
+                                    <h4 class="font-bold text-lg text-white">コミュニケーション</h4>
+                                    <p class="text-slate-400">利用者の75%以上が主目的と回答</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center bg-gray-700 p-4 rounded-lg">
+                                 <span class="text-3xl mr-4">💳</span>
+                                 <div>
+                                    <h4 class="font-bold text-lg text-white">決済・金融 (LINE Pay)</h4>
+                                    <p class="text-slate-400">日常の買い物から送金まで</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center bg-gray-700 p-4 rounded-lg">
+                                 <span class="text-3xl mr-4">📰</span>
+                                 <div>
+                                    <h4 class="font-bold text-lg text-white">ニュース・コンテンツ</h4>
+                                    <p class="text-slate-400">パーソナライズされた情報配信</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="japan-generation-gap">
+                <h2 class="text-3xl font-bold text-center mb-8 section-title">メディア消費の世代間格差（日本）</h2>
+                 <div class="bg-gray-800 rounded-lg shadow-xl p-6">
+                    <h3 class="text-2xl font-bold text-center mb-4">インターネット vs テレビ（平日1日あたり）</h3>
+                    <p class="text-center text-slate-400 mb-6">若年層はテレビをほとんど見ず、インターネット利用が圧倒的。逆に高齢層ではテレビが依然として主要な情報源であり、メディア消費の分断が鮮明になっています。</p>
+                    <div class="chart-container h-[450px] max-h-[500px]">
+                        <canvas id="japanMediaGenerationChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="text-center text-slate-500 mt-16 py-8 border-t border-gray-700">
+            <p>データ出典: オンライン時間利用とプラットフォーム選好度に関する調査報告 (2024年)</p>
+            <p>インフォグラフィック作成: Canvas Infographics</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const wrapLabel = (label, maxLength = 16) => {
+            if (label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + word).length > maxLength) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            });
+            lines.push(currentLine.trim());
+            return lines;
+        };
+
+        const chartColors = {
+            red: '#FF5733',
+            green: '#33FF57',
+            blue: '#3357FF',
+            pink: '#FF33A1',
+            purple: '#A133FF',
+            cyan: '#33FFF6',
+            lightGray: '#4a5568'
+        };
+
+        const defaultChartOptions = {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#e2e8f0',
+                        font: { size: 12 }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: { color: '#94a3b8' },
+                    grid: { color: '#4a5568' }
+                },
+                x: {
+                    ticks: { color: '#94a3b8' },
+                    grid: { display: false }
+                }
+            }
+        };
+
+        new Chart(document.getElementById('socialTimeDonutChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['ソーシャルメディア', 'その他オンライン活動'],
+                datasets: [{
+                    data: [35.8, 64.2],
+                    backgroundColor: [chartColors.red, chartColors.lightGray],
+                    borderColor: '#2d3748',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                 ...defaultChartOptions,
+                 scales: { y: { display: false }, x: { display: false } }
+            }
+        });
+
+        new Chart(document.getElementById('globalPlatformsBarChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Facebook', 'YouTube', 'Instagram', 'TikTok'],
+                datasets: [{
+                    label: '月間アクティブユーザー数（億人）',
+                    data: [30.5, 27.8, 20.0, 15.6],
+                    backgroundColor: [chartColors.blue, chartColors.red, chartColors.pink, chartColors.cyan],
+                }]
+            },
+            options: {
+                ...defaultChartOptions,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('youtubeWatchTimeChart'), {
+            type: 'bar',
+            data: {
+                labels: ['YouTube', 'Facebook', 'TikTok'],
+                datasets: [{
+                    label: '総視聴時間の比較 (YouTube=2.1)',
+                    data: [2.1, 1.5, 1],
+                    backgroundColor: [chartColors.red, chartColors.blue, chartColors.cyan],
+                }]
+            },
+             options: {
+                ...defaultChartOptions,
+                indexAxis: 'y',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+        
+        new Chart(document.getElementById('worldJapanTimeComparisonChart'), {
+            type: 'bar',
+            data: {
+                labels: ['1日の平均オンライン時間', '1日の平均ソーシャルメディア利用時間'],
+                datasets: [
+                    {
+                        label: '世界平均',
+                        data: [400, 143],
+                        backgroundColor: chartColors.purple,
+                    },
+                    {
+                        label: '日本',
+                        data: [225, 53],
+                        backgroundColor: chartColors.green,
+                    }
+                ]
+            },
+            options: {
+                ...defaultChartOptions,
+                 scales: {
+                    y: {
+                        ticks: {
+                            callback: function(value) {
+                                const hours = Math.floor(value / 60);
+                                const minutes = value % 60;
+                                return `${hours}時間 ${minutes}分`;
+                            },
+                            color: '#94a3b8'
+                        },
+                        grid: { color: '#4a5568' }
+                    },
+                    x: { ticks: { color: '#94a3b8' }, grid: { display: false } }
+                }
+            }
+        });
+
+        const japanPlatformLabels = ['LINE', 'YouTube', 'X (Twitter)', 'Instagram', 'TikTok', 'Facebook'];
+        new Chart(document.getElementById('japanPlatformsChart'), {
+            type: 'bar',
+            data: {
+                labels: japanPlatformLabels.map(label => wrapLabel(label)),
+                datasets: [{
+                    label: '日本国内のユーザー数（万人）',
+                    data: [9600, 10200, 7340, 5545, 2605, 1505],
+                    backgroundColor: [chartColors.green, chartColors.red, chartColors.cyan, chartColors.pink, chartColors.purple, chartColors.blue],
+                }]
+            },
+             options: {
+                ...defaultChartOptions,
+                indexAxis: 'y',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+        
+        new Chart(document.getElementById('japanMediaGenerationChart'), {
+            type: 'bar',
+            data: {
+                labels: ['10代', '20代', '30代', '40代', '50代', '60代'],
+                datasets: [
+                    {
+                        label: 'インターネット利用時間 (分)',
+                        data: [257.8, 275.8, 201.9, 176.2, 173.8, 133.7],
+                        backgroundColor: chartColors.blue,
+                    },
+                    {
+                        label: 'テレビ視聴時間 (分)',
+                        data: [39.2, 53.9, 89.9, 134.6, 163.2, 257.0],
+                        backgroundColor: chartColors.lightGray,
+                    }
+                ]
+            },
+            options: {
+                ...defaultChartOptions,
+                scales: {
+                    x: { stacked: false, ticks: { color: '#94a3b8' } },
+                    y: { stacked: false, ticks: { color: '#94a3b8' }, grid: { color: '#4a5568' } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
