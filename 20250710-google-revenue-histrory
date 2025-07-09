@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphabet Inc. 収益構造の変遷（2014年～2023年）</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        h1, h2, h3 {
+            color: #1a202c;
+            font-weight: 700;
+        }
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1f2937;
+        }
+        h2 {
+            font-size: 2rem;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        .chart-container {
+            position: relative;
+            height: 500px; /* Adjust height for better visibility */
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        .pie-chart-container {
+            position: relative;
+            height: 350px;
+            width: 100%;
+        }
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .flex-item {
+            flex: 1;
+            min-width: 300px;
+            max-width: 550px;
+        }
+        .note {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 20px;
+            padding-left: 10px;
+            border-left: 3px solid #cbd5e0;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.75rem;
+            }
+            h3 {
+                font-size: 1.25rem;
+            }
+            .card {
+                padding: 20px;
+            }
+            .chart-container, .pie-chart-container {
+                height: 400px; /* Adjust height for mobile */
+            }
+        }
+    </style>
+</head>
+<body class="p-4">
+    <div class="container">
+        <h1 class="text-gray-900 mb-8">Alphabet Inc. 収益構造の変革：10年間の戦略的進化（2014年～2023年）</h1>
+
+        <div class="card">
+            <h2 class="text-gray-800">エグゼクティブサマリー</h2>
+            <p class="text-gray-700">
+                過去10年間、Alphabet Inc.の収益構造は顕著な変革を遂げました。この期間は、同社がデジタル経済の進化に適応し、伝統的な広告事業の優位性を維持しつつ、新たな成長分野を開拓した時代として特徴付けられます。特にGoogle Cloudの目覚ましい台頭と、ハードウェアおよびサブスクリプションサービスへの戦略的な多角化は、同社の経済基盤を検索の中核を超えて拡大する積極的な適応を示しています。
+            </p>
+            <p class="text-gray-700 mt-4">
+                総収益は大幅に増加し、2014年の660億ドルから2023年には3070億ドル超へと4倍以上に成長しました。この成長は、Google広告が依然として最大の貢献者である一方で、Google Cloudが主要な成長エンジンとして浮上し、その収益寄与度を劇的に高めたことによって支えられています。また、「Googleその他」セグメントの「サブスクリプション、プラットフォーム、デバイス」への再編は、直接的な消費者収益モデルへの戦略的な移行を示唆しています。「Other Bets」は、財務的な貢献は小さいものの、長期的なイノベーションと将来の市場開拓に向けた戦略的投資としての役割を継続しています。これらの変化は、Alphabetが変化する市場環境に対応し、持続的な成長と収益の安定化を図るための多角的なアプローチを採用していることを明確に示しています。
+            </p>
+        </div>
+
+        <div class="card">
+            <h2 class="text-gray-800">セグメント別年間収益の推移（2014年～2023年）</h2>
+            <p class="text-gray-700 mb-6">
+                以下のグラフは、Alphabet社の主要な収益セグメントが過去10年間でどのように推移し、総収益に貢献してきたかを示しています。特に、Google Cloudの急速な成長と、Google広告の継続的な規模が際立っています。
+            </p>
+            <div class="chart-container">
+                <canvas id="revenueTrendChart"></canvas>
+            </div>
+            <div class="note">
+                <p>注1：2018年以前のGoogle Cloudの収益は「Googleその他」に含まれていました。グラフでは2018年以降に独立したセグメントとして表示しています。</p>
+                <p>注2：2020年のGoogle Cloud、Googleその他/サブスクリプション、プラットフォーム、デバイス、およびOther Betsの詳細な収益データは、提供された資料に直接記載されていません。</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="text-gray-800">収益セグメント貢献度の比較（2014年 vs. 2023年）</h2>
+            <p class="text-gray-700 mb-6">
+                この比較は、Alphabet社の収益構造が10年間でどのように変化したかを明確に示しています。Google広告の割合は減少したものの依然として最大であり、Google CloudとGoogleその他/サブスクリプション、プラットフォーム、デバイスの割合が増加していることが分かります。
+            </p>
+            <div class="flex-container">
+                <div class="flex-item">
+                    <h3 class="text-center text-gray-800">2014年 収益貢献度</h3>
+                    <div class="pie-chart-container">
+                        <canvas id="pieChart2014"></canvas>
+                    </div>
+                </div>
+                <div class="flex-item">
+                    <h3 class="text-center text-gray-800">2023年 収益貢献度</h3>
+                    <div class="pie-chart-container">
+                        <canvas id="pieChart2023"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // データセット
+        const years = ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'];
+
+        const googleAdsRevenue = [
+            59056, 67390, 79383, 95375, 116461, 134811, 146920, 209497, 224473, 237860
+        ];
+        const googleCloudRevenue = [
+            0, 0, 0, 0, 5838, 8918, 0, 19206, 26280, 33100
+        ]; // 2018年以前はGoogleその他に含まれるため0
+        const googleOtherRevenue = [
+            6050, 7151, 10080, 14277, 14063, 17014, 0, 28032, 29055, 34680
+        ]; // 2020年はデータなし
+        const otherBetsRevenue = [
+            327, 448, 809, 1203, 595, 659, 0, 753, 1068, 675
+        ]; // 2020年はデータなし
+
+        // グラフの色
+        const colors = {
+            googleAds: 'rgba(66, 133, 244, 0.8)', // Google Blue
+            googleCloud: 'rgba(234, 67, 53, 0.8)', // Google Red
+            googleOther: 'rgba(251, 188, 5, 0.8)', // Google Yellow
+            otherBets: 'rgba(52, 168, 83, 0.8)'  // Google Green
+        };
+
+        // 積み上げ棒グラフのデータ
+        const revenueTrendData = {
+            labels: years,
+            datasets: [
+                {
+                    label: 'Google広告',
+                    data: googleAdsRevenue,
+                    backgroundColor: colors.googleAds,
+                    borderColor: colors.googleAds,
+                    borderWidth: 1
+                },
+                {
+                    label: 'Google Cloud',
+                    data: googleCloudRevenue,
+                    backgroundColor: colors.googleCloud,
+                    borderColor: colors.googleCloud,
+                    borderWidth: 1
+                },
+                {
+                    label: 'Googleその他 / サブスクリプション、プラットフォーム、デバイス',
+                    data: googleOtherRevenue,
+                    backgroundColor: colors.googleOther,
+                    borderColor: colors.googleOther,
+                    borderWidth: 1
+                },
+                {
+                    label: 'Other Bets',
+                    data: otherBetsRevenue,
+                    backgroundColor: colors.otherBets,
+                    borderColor: colors.otherBets,
+                    borderWidth: 1
+                }
+            ]
+        };
+
+        // 積み上げ棒グラフのオプション
+        const revenueTrendOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    stacked: true,
+                    title: {
+                        display: true,
+                        text: '年',
+                        color: '#333'
+                    },
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    stacked: true,
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: '収益 (百万ドル)',
+                        color: '#333'
+                    },
+                    ticks: {
+                        callback: function(value) {
+                            return value.toLocaleString();
+                        }
+                    },
+                    grid: {
+                        color: '#e2e8f0'
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Alphabet Inc. 年間収益の推移（セグメント別）',
+                    font: {
+                        size: 18,
+                        weight: 'bold'
+                    },
+                    color: '#1a202c'
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += context.parsed.y.toLocaleString() + '百万ドル';
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+
+        // 積み上げ棒グラフの描画
+        const ctxTrend = document.getElementById('revenueTrendChart').getContext('2d');
+        new Chart(ctxTrend, {
+            type: 'bar',
+            data: revenueTrendData,
+            options: revenueTrendOptions
+        });
+
+        // 円グラフのデータ（2014年 vs 2023年）
+        const pieData2014 = {
+            labels: ['Google広告', 'Googleその他 / サブスクリプション、プラットフォーム、デバイス', 'Other Bets'],
+            datasets: [{
+                data: [89.5, 9.2, 0.5], // 2014年の割合
+                backgroundColor: [colors.googleAds, colors.googleOther, colors.otherBets],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+
+        const pieData2023 = {
+            labels: ['Google広告', 'Google Cloud', 'Googleその他 / サブスクリプション、プラットフォーム、デバイス', 'Other Bets'],
+            datasets: [{
+                data: [77.4, 10.8, 11.3, 0.2], // 2023年の割合
+                backgroundColor: [colors.googleAds, colors.googleCloud, colors.googleOther, colors.otherBets],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+
+        // 円グラフのオプション
+        const pieOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: '#333'
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed !== null) {
+                                label += context.parsed + '%';
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+
+        // 円グラフの描画
+        const ctxPie2014 = document.getElementById('pieChart2014').getContext('2d');
+        new Chart(ctxPie2014, {
+            type: 'pie',
+            data: pieData2014,
+            options: pieOptions
+        });
+
+        const ctxPie2023 = document.getElementById('pieChart2023').getContext('2d');
+        new Chart(ctxPie2023, {
+            type: 'pie',
+            data: pieData2023,
+            options: pieOptions
+        });
+    </script>
+</body>
+</html>
